@@ -1,5 +1,9 @@
 The **BUP20: Sweet Pepper Dataset** was captured at the University of Bonn's campus Klein-Altendorf (CKA) in a commercial glasshouse. The authors propose a novel field agnostic monitoring technique that is able to operate on two different robots, in arable farmland or a glasshouse (horticultural setting). Instance segmentation forms the backbone of this approach from which object location and class, object area, and yield information can be obtained.
 
+Note, similar **BUP20: Sweet Pepper Dataset** datasets are also available on the [DatasetNinja.com](https://datasetninja.com/):
+
+- [BUP19: Sweet Pepper Dataset](https://datasetninja.com/bup19)
+
 ## Motivation
 
 Farmers require a wealth of diverse and intricate information to make informed agronomic decisions related to crop management, including intervention tasks. Traditionally, this information is gathered by farmers traversing their fields or greenhouses, a process that is often time-consuming and potentially expensive. In recent years, there has been a notable surge in the adoption of robotic platforms, driven by advancements in artificial intelligence. However, these platforms are typically specialized for specific settings, such as arable farmland, or their algorithms are tailored to a singular platform, resulting in a substantial gap between existing technology and the needs of farmers.
