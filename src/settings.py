@@ -14,7 +14,7 @@ from dataset_tools.templates import (
 # * Before uploading to instance #
 ##################################
 PROJECT_NAME: str = "BUP20"
-PROJECT_NAME_FULL: str = "BUP19: Sweet Pepper Dataset"
+PROJECT_NAME_FULL: str = "BUP20: Sweet Pepper Dataset"
 HIDE_DATASET = True  # set False when 100% sure about repo quality
 
 ##################################
@@ -83,10 +83,9 @@ ORGANIZATION_URL: Optional[Union[str, List[str]]] = "https://www.uni-bonn.de/en"
 
 # Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}
 SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
-    "labeller": ["claus smitt", "ramsay", "chris mccool", "agr user1", "michallhal"],
     "date": ["20200924", "20201001"],
     "row": ["row2", "row3", "row4", "row5", "row6"],
-    "__POSTTEXT__": "Additionally, images are grouped by ***im id***. Also, every image marked with ***odometry*** tag, every image and label contain ***milliseconds*** tag. Explore it in supervisely labeling tool",
+    "__POSTTEXT__": "Additionally, images are grouped by ***im id***. Also, every image marked with ***odometry*** tag, every image and label contain ***milliseconds*** tag. Every label contain infomation about its labeller: ***claus smitt***, ***ramsay***, ***chris mccool***, ***agr user1***, ***michallhal***. Explore it in supervisely labeling tool",
 }
 TAGS: Optional[List[str]] = None
 

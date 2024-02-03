@@ -1,11 +1,13 @@
 If you make use of the BUP20 data, please cite the following reference:
 
 ``` bibtex 
-@dataset{BUP20,
-  author={Michael Halstead and Alireza Ahmad and Claus German Smitt and Oliver Schmittmann and Chris McCool},
-  title={BUP19: Sweet Pepper Dataset},
-  year={2020},
-  url={http://agrobotics.uni-bonn.de/}
+@inproceedings{smitt2021pathobot,
+  title={Pathobot: A robot for glasshouse crop phenotyping and intervention},
+  author={Smitt, Claus and Halstead, Michael and Zaenker, Tobias and Bennewitz, Maren and McCool, Chris},
+  booktitle={2021 IEEE International Conference on Robotics and Automation (ICRA)},
+  pages={2324--2330},
+  year={2021},
+  organization={IEEE}
 }
 ```
 
