@@ -16,7 +16,7 @@ From the perspective of stakeholders, namely farmers, monitoring plants and thei
 
 There are two critical aspects to the BUP20 dataset. First, it has labeled instance segmentation masks and full temporal sequences for tracking. Second, it has important robot and scene information, such as registered depth images, camera parameters, and wheel ***odometry*** information. It consists of non-overlapping annotated images. The sweet pepper dataset was captured at the University of Bonn's campus Klein-Altendorf (CKA) in a commercial glasshouse. Images were captured on an Intel RealSense 435i camera (Intel Corporation, Santa Clara, California, USA.) with a resolution of 1280 × 720. The BUP20 dataset captured two different cultivars: Mavera (green-yellow) and Allrounder (green-red). While green dominates, there is a rich representation of all the sub-classes.
 
-<img src="https://github.com/dataset-ninja/bup20/assets/120389559/e2c9092d-de1c-4a3d-b223-007854fa32f1" alt="image" width="800">
+<img src="https://github.com/dataset-ninja/bup20/assets/120389559/e2c9092d-de1c-4a3d-b223-007854fa32f1" alt="image" width="500">
 
 <span style="font-size: smaller; font-style: italic;">Sweet pepper dataset (BUP20).</span>
 
@@ -24,6 +24,6 @@ To quantitatively assess the tracking algorithm's performance, we conducted addi
 
 The annotation of the BUP20 dataset presented challenges due to the potential appearance of fruit in the images from distant rows. Annotators were instructed to utilize the heat rails, situated approximately 1.05 meters from the sensor, as a reference guide. Fruits appearing beyond this reference point were excluded from the count. Despite this guideline, determining fruit location, coupled with challenges such as juvenile peppers resembling leaves and varying degrees of occlusion, introduced some ambiguity in the annotations.
 
-<img src="https://github.com/dataset-ninja/bup20/assets/120389559/b30865ff-c594-4852-8427-861d2689420a" alt="image" width="800">
+<img src="https://github.com/dataset-ninja/bup20/assets/120389559/b30865ff-c594-4852-8427-861d2689420a" alt="image" width="500">
 
 <span style="font-size: smaller; font-style: italic;">The yield counts for the BUP20 dataset were derived from the mean and rounded values provided by three annotators, encompassing both the validation and evaluation rows.</span>
