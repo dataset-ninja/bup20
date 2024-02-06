@@ -35,14 +35,3 @@ There are two critical aspects to the BUP20 dataset. First, it has labeled insta
 To quantitatively assess the tracking algorithm's performance, they conducted additional annotation of the data. Utilizing the provided video sequences, three annotators systematically tallied the occurrences of the five sub-classes in the image sequences, ensuring each sweet pepper was accounted for only once. This meticulous process yielded ground truth data, encompassing counts for each sub-class across an entire row.
 
 The annotation of the BUP20 dataset presented challenges due to the potential appearance of fruit in the images from distant rows. Annotators were instructed to utilize the heat rails, situated approximately 1.05 meters from the sensor, as a reference guide. Fruits appearing beyond this reference point were excluded from the count. Despite this guideline, determining fruit location, coupled with challenges such as juvenile peppers resembling leaves and varying degrees of occlusion, introduced some ambiguity in the annotations.
-
-| Row   | Red | Yellow | Green | Mixed Red | Mixed Yellow | Total |
-|-------|-----|--------|-------|-----------|--------------|-------|
-| 24-R4 | 10  | 17     | 212   | 6         | 15           | 260   |
-| 24-R5 | 10  | 6      | 157   | 8         | 21           | 202   |
-| 01-R4 | 13  | 24     | 231   | 9         | 15           | 292   |
-| 01-R5 | 6   | 26     | 158   | 4         | 7            | 201   |
-| 01-R6 | 11  | 13     | 192   | 11        | 12           | 239   |
-
-
-<span style="font-size: smaller; font-style: italic;">The yield counts for the BUP20 dataset were derived from the mean and rounded values provided by three annotators, encompassing both the validation and evaluation rows.</span>
