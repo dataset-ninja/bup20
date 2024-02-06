@@ -20,7 +20,15 @@ From the perspective of stakeholders, namely farmers, monitoring plants and thei
 
 There are two critical aspects to the BUP20 dataset. First, it has labeled instance segmentation masks and full temporal sequences for tracking. Second, it has important robot and scene information, such as registered depth images, camera parameters, and wheel ***odometry*** information. It consists of non-overlapping annotated images. The sweet pepper dataset was captured at the University of Bonn's campus Klein-Altendorf (CKA) in a commercial glasshouse. Images were captured on an Intel RealSense 435i camera (Intel Corporation, Santa Clara, California, USA.) with a resolution of 1280 × 720. The BUP20 dataset captured two different cultivars: Mavera (green-yellow) and Allrounder (green-red). While green dominates, there is a rich representation of all the sub-classes.
 
-<img src="https://github.com/dataset-ninja/bup20/assets/120389559/e2c9092d-de1c-4a3d-b223-007854fa32f1" alt="image" width="500">
+| Name        | Abbreviation | Train | Validation | Evaluation |
+|-------------|--------------|-------|------------|------------|
+| BUP20       |              |       |            |            |
+| Red         | Rd           | 158   | 52         | 100        |
+| Yellow      | Yl           | 318   | 98         | 181        |
+| Green       | Gn           | 2774  | 1285       | 1466       |
+| Mixed Red   | Mr           | 100   | 62         | 70         |
+| Mixed Yellow| My           | 189   | 101        | 143        |
+
 
 <span style="font-size: smaller; font-style: italic;">Sweet pepper dataset (BUP20).</span>
 
@@ -28,6 +36,13 @@ To quantitatively assess the tracking algorithm's performance, they conducted ad
 
 The annotation of the BUP20 dataset presented challenges due to the potential appearance of fruit in the images from distant rows. Annotators were instructed to utilize the heat rails, situated approximately 1.05 meters from the sensor, as a reference guide. Fruits appearing beyond this reference point were excluded from the count. Despite this guideline, determining fruit location, coupled with challenges such as juvenile peppers resembling leaves and varying degrees of occlusion, introduced some ambiguity in the annotations.
 
-<img src="https://github.com/dataset-ninja/bup20/assets/120389559/b30865ff-c594-4852-8427-861d2689420a" alt="image" width="500">
+| Row   | Red | Yellow | Green | Mixed Red | Mixed Yellow | Total |
+|-------|-----|--------|-------|-----------|--------------|-------|
+| 24-R4 | 10  | 17     | 212   | 6         | 15           | 260   |
+| 24-R5 | 10  | 6      | 157   | 8         | 21           | 202   |
+| 01-R4 | 13  | 24     | 231   | 9         | 15           | 292   |
+| 01-R5 | 6   | 26     | 158   | 4         | 7            | 201   |
+| 01-R6 | 11  | 13     | 192   | 11        | 12           | 239   |
+
 
 <span style="font-size: smaller; font-style: italic;">The yield counts for the BUP20 dataset were derived from the mean and rounded values provided by three annotators, encompassing both the validation and evaluation rows.</span>
