@@ -45,7 +45,7 @@ if RELEASE_DATE is None:
 HOMEPAGE_URL: str = "http://agrobotics.uni-bonn.de/"
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = 13205660
+PREVIEW_IMAGE_ID: int = 13254163
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
 GITHUB_URL: str = "https://github.com/dataset-ninja/bup20"
@@ -83,8 +83,8 @@ ORGANIZATION_URL: Optional[Union[str, List[str]]] = "https://www.uni-bonn.de/en"
 
 # Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}
 SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
-    "date": ["20200924", "20201001"],
-    "row": ["row2", "row3", "row4", "row5", "row6"],
+    "dates": ["2020-09-24", "2020-10-01"],
+    "rows": ["row2", "row3", "row4", "row5", "row6"],
     "__POSTTEXT__": "Additionally, images are grouped by ***im id***. Also, every image marked with ***odometry*** tag, every image and label contain ***milliseconds*** tag. Every label contain infomation about its labeller: ***claus smitt***, ***ramsay***, ***chris mccool***, ***agr user1***, ***michallhal***. Explore it in supervisely labeling tool",
 }
 TAGS: Optional[List[str]] = None

@@ -24,7 +24,7 @@ There are two critical aspects to the BUP20 dataset. First, it has labeled insta
 
 <span style="font-size: smaller; font-style: italic;">Sweet pepper dataset (BUP20).</span>
 
-To quantitatively assess the tracking algorithm's performance, we conducted additional annotation of the data. Utilizing the provided video sequences, three annotators systematically tallied the occurrences of the five sub-classes in the image sequences, ensuring each sweet pepper was accounted for only once. This meticulous process yielded ground truth data, encompassing counts for each sub-class across an entire row.
+To quantitatively assess the tracking algorithm's performance, they conducted additional annotation of the data. Utilizing the provided video sequences, three annotators systematically tallied the occurrences of the five sub-classes in the image sequences, ensuring each sweet pepper was accounted for only once. This meticulous process yielded ground truth data, encompassing counts for each sub-class across an entire row.
 
 The annotation of the BUP20 dataset presented challenges due to the potential appearance of fruit in the images from distant rows. Annotators were instructed to utilize the heat rails, situated approximately 1.05 meters from the sensor, as a reference guide. Fruits appearing beyond this reference point were excluded from the count. Despite this guideline, determining fruit location, coupled with challenges such as juvenile peppers resembling leaves and varying degrees of occlusion, introduced some ambiguity in the annotations.
 

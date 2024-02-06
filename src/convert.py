@@ -91,7 +91,7 @@ def convert_and_upload_supervisely_project(
         group_tag = sly.Tag(group_tag_meta, get_file_name(image_path))
         tags.append(group_tag)
 
-        date_meta = meta.get_tag_meta(image_path.split("/")[-3])
+        date_meta = date_to_meta.get(image_path.split("/")[-3])
         date = sly.Tag(date_meta)
         tags.append(date)
 
@@ -115,38 +115,36 @@ def convert_and_upload_supervisely_project(
         ann_data = image_name_to_ann_data[get_file_name_with_ext(image_path)]
         if len(ann_data) > 0:
             for curr_ann_data in ann_data:
-                creator_value = curr_ann_data[4]
-                creator_meta = creator_to_meta[creator_value]
-                creator = sly.Tag(creator_meta)
-                milliseconds_value = int(curr_ann_data[3])
-                milliseconds = sly.Tag(milliseconds_meta, value=milliseconds_value)
                 category_id = curr_ann_data[0]
-                polygons_coords = curr_ann_data[1]
+                obj_class = idx_to_obj_class.get(category_id)
+                if obj_class is not None:
+                    creator_str = curr_ann_data[4]
+                    creator_value = creator_to_value[creator_str]
+                    creator = sly.Tag(creator_meta, value=creator_value)
+                    milliseconds_value = int(curr_ann_data[3])
+                    milliseconds = sly.Tag(milliseconds_meta, value=milliseconds_value)
+                    polygons_coords = curr_ann_data[1]
 
-                exterior = []
-                for coords in polygons_coords:
-                    for i in range(0, len(coords), 2):
-                        exterior.append([int(coords[i + 1]), int(coords[i])])
-                    if len(exterior) < 3:
-                        continue
-                if len(exterior) > 3:
-                    poligon = sly.Polygon(exterior)
-                    label_poly = sly.Label(
-                        poligon, idx_to_obj_class[category_id], tags=[milliseconds, creator]
+                    exterior = []
+                    for coords in polygons_coords:
+                        for i in range(0, len(coords), 2):
+                            exterior.append([int(coords[i + 1]), int(coords[i])])
+                        if len(exterior) < 3:
+                            continue
+                    if len(exterior) > 3:
+                        poligon = sly.Polygon(exterior)
+                        label_poly = sly.Label(poligon, obj_class, tags=[milliseconds, creator])
+                        labels.append(label_poly)
+
+                    bbox_coord = curr_ann_data[2]
+                    rectangle = sly.Rectangle(
+                        top=int(bbox_coord[1]),
+                        left=int(bbox_coord[0]),
+                        bottom=int(bbox_coord[1] + bbox_coord[3]),
+                        right=int(bbox_coord[0] + bbox_coord[2]),
                     )
-                    labels.append(label_poly)
-
-                bbox_coord = curr_ann_data[2]
-                rectangle = sly.Rectangle(
-                    top=int(bbox_coord[1]),
-                    left=int(bbox_coord[0]),
-                    bottom=int(bbox_coord[1] + bbox_coord[3]),
-                    right=int(bbox_coord[0] + bbox_coord[2]),
-                )
-                label_rectangle = sly.Label(
-                    rectangle, idx_to_obj_class[category_id], tags=[milliseconds, creator]
-                )
-                labels.append(label_rectangle)
+                    label_rectangle = sly.Label(rectangle, obj_class, tags=[milliseconds, creator])
+                    labels.append(label_rectangle)
 
         return sly.Annotation(img_size=(img_height, img_wight), labels=labels, img_tags=tags)
 
@@ -154,20 +152,20 @@ def convert_and_upload_supervisely_project(
 
     ann = load_json_file(ann_path)
 
-    pepper_kp = sly.ObjClass("pepper kp", sly.AnyGeometry, color=(0, 0, 255))
+    # pepper_kp = sly.ObjClass("pepper kp", sly.AnyGeometry, color=(0, 0, 255))
     red = sly.ObjClass("red", sly.AnyGeometry, color=(199, 33, 28))
     yellow = sly.ObjClass("yellow", sly.AnyGeometry, color=(255, 247, 0))
     green = sly.ObjClass("green", sly.AnyGeometry, color=(0, 255, 0))
-    mixed = sly.ObjClass("mixed", sly.AnyGeometry, color=(255, 0, 255))
+    # mixed = sly.ObjClass("mixed", sly.AnyGeometry, color=(255, 0, 255))
     mixed_red = sly.ObjClass("mixed red", sly.AnyGeometry, color=(255, 102, 0))
     mixed_yellow = sly.ObjClass("mixed yellow", sly.AnyGeometry, color=(209, 196, 21))
 
     idx_to_obj_class = {
-        11: pepper_kp,
+        # 11: pepper_kp,
         12: red,
         13: yellow,
         14: green,
-        15: mixed,
+        # 15: mixed,
         17: mixed_red,
         18: mixed_yellow,
     }
@@ -177,23 +175,26 @@ def convert_and_upload_supervisely_project(
     row4_meta = sly.TagMeta("row4", sly.TagValueType.NONE)
     row5_meta = sly.TagMeta("row5", sly.TagValueType.NONE)
     row6_meta = sly.TagMeta("row6", sly.TagValueType.NONE)
-    date09_meta = sly.TagMeta("20200924", sly.TagValueType.NONE)
-    date10_meta = sly.TagMeta("20201001", sly.TagValueType.NONE)
+    date09_meta = sly.TagMeta("2020-09-24", sly.TagValueType.NONE)
+    date10_meta = sly.TagMeta("2020-10-01", sly.TagValueType.NONE)
     milliseconds_meta = sly.TagMeta("milliseconds", sly.TagValueType.ANY_NUMBER)
     odom_meta = sly.TagMeta("odometry", sly.TagValueType.ANY_STRING)
-    claussmitt_meta = sly.TagMeta("claus smitt", sly.TagValueType.NONE)
-    ramsay_meta = sly.TagMeta("ramsay", sly.TagValueType.NONE)
-    chris_mccool_meta = sly.TagMeta("chris mccool", sly.TagValueType.NONE)
-    agr_meta = sly.TagMeta("agr user1", sly.TagValueType.NONE)
-    michallhal_meta = sly.TagMeta("michallhal", sly.TagValueType.NONE)
+    creator_meta = sly.TagMeta("labeller", sly.TagValueType.ANY_STRING)
+    # claussmitt_meta = sly.TagMeta("claus smitt", sly.TagValueType.NONE)
+    # ramsay_meta = sly.TagMeta("ramsay", sly.TagValueType.NONE)
+    # chris_mccool_meta = sly.TagMeta("chris mccool", sly.TagValueType.NONE)
+    # agr_meta = sly.TagMeta("agr user1", sly.TagValueType.NONE)
+    # michallhal_meta = sly.TagMeta("michallhal", sly.TagValueType.NONE)
     group_tag_meta = sly.TagMeta(group_tag_name, sly.TagValueType.ANY_STRING)
 
-    creator_to_meta = {
-        "claussmitt": claussmitt_meta,
-        "ramsay": ramsay_meta,
-        "chris_mccool": chris_mccool_meta,
-        "AgR_User_1": agr_meta,
-        "michallhal": michallhal_meta,
+    date_to_meta = {"20200924": date09_meta, "20201001": date10_meta}
+
+    creator_to_value = {
+        "claussmitt": "claus smitt",
+        "ramsay": "ramsay",
+        "chris_mccool": "chris mccool",
+        "AgR_User_1": "agr user1",
+        "michallhal": "michallhal",
     }
 
     meta = sly.ProjectMeta(
@@ -207,11 +208,12 @@ def convert_and_upload_supervisely_project(
             date10_meta,
             milliseconds_meta,
             odom_meta,
-            claussmitt_meta,
-            ramsay_meta,
-            chris_mccool_meta,
-            agr_meta,
-            michallhal_meta,
+            creator_meta,
+            # claussmitt_meta,
+            # ramsay_meta,
+            # chris_mccool_meta,
+            # agr_meta,
+            # michallhal_meta,
             group_tag_meta,
         ],
         obj_classes=list(idx_to_obj_class.values()),
