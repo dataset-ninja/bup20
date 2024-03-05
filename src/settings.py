@@ -87,7 +87,7 @@ SLYTAGSPLIT: Optional[Dict[str, Union[List[str], str]]] = {
     "rows": ["row2", "row3", "row4", "row5", "row6"],
     "__POSTTEXT__": "Additionally, images are grouped by ***im id***. Also, every image marked with ***odometry*** tag, every image and label contain ***milliseconds*** tag. Every label contain infomation about its labeller: ***claus smitt***, ***ramsay***, ***chris mccool***, ***agr user1***, ***michallhal***. Explore it in supervisely labeling tool",
 }
-TAGS: Optional[List[str]] = None
+TAGS: Optional[List[str]] = ['multi-view']
 
 
 SECTION_EXPLORE_CUSTOM_DATASETS: Optional[List[str]] = None
